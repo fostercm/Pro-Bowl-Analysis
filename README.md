@@ -1,15 +1,62 @@
-# Pro-Bowl-Analysis
+# NFL Pro Bowl Data Analysis and Model Evaluation
 
-This repo contains the necessary components of our Pro Bowl Analysis project. We used machine learning to understand different aspects of the pro bowl such as important statistics, and whether players were overrated or underrated. The contents are listed in more detail below
+## Overview
+This project aims to analyze NFL player statistics and predict Pro Bowl appearances using classification models. The analysis includes data preprocessing, exploratory data analysis (EDA), and training machine learning models such as Support Vector Machines (SVM), Linear Discriminant Analysis (LDA), and Random Forest (RF).
 
-## data
+## Dependencies
+The project requires the following R and Python libraries:
 
-This folder contains three files: passing, rushing, and receiving data. These CSVs were constructed using the webscraper available in src, but for convenience they are available here. To use them, just replace the file path in R.
+### R Libraries:
+- `ggplot2`
+- `reshape2`
+- `tidyr`
+- `dplyr`
+- `caret`
+- `caTools`
+- `randomForest`
+- `e1071`
+- `pROC`
 
-## docs
+### Python Libraries:
+- `pandas`
+- `numpy`
+- `tqdm`
+- `requests`
+- `beautifulsoup4`
+- `joblib`
 
-This folder contains two files: Final_Report and Presentation. The Final_Report is our overall project writeup, containing more details about our project's methodology and results. The presentation contains a more concise and visual version of the writeup.
+Make sure to install these dependencies before running the scripts.
 
-## src
+## Data Description
+The data used in this analysis includes NFL player statistics from 1994 to 2020 for passing, rushing, and receiving categories. Each dataset contains the following columns:
+- **Player**: Player's name
+- **Year**: Year of the season
+- **Position-Specific Performance Statistics**
+- **Pro Bowl**: Binary indicator (1 if the player made the Pro Bowl, 0 otherwise)
 
-This folder contains two files: Pro_Bowl_Modeling, and Pro_Bowl_Webscraping. Pro_Bowl_Modeling is our overall project code, where we ran experiments and extracted results available in the writeup. Pro_Bowl_Webscraping has the available resources if you would like to webscrape the data yourself.
+## How to Run
+
+### Python Scipt:
+1. Navigate to the src folder
+2. Run the webscraping script in terminal to scrape data:
+   ``` bash
+   python webscraper.py
+   ```
+
+### R Script:
+1. Run the script main.R in the src directory to generate relevant plots and print stats
+
+## Results
+The polished results of the data analysis are saved in the `docs` folder. This folder contains:
+- **Final_Report.docx**: An in depth view of the data analysis
+- **Presentation.pdf**: A surface level view of analysis and results
+
+For unpolished script results:
+- **Processed Data**: CSV files for training and testing datasets for passing, rushing, and receiving statistics.
+  - `nfl_passing.csv`
+  - `nfl_rushing.csv`
+  - `nfl_receiving.csv`
+- **Plots and Analysis**: The visualizations generated from the exploratory analysis are visible in R
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
