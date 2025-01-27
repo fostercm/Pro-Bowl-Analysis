@@ -64,3 +64,23 @@ for year in tqdm(range(1994, 2021)):
     
     # Concatenate the data
     pbdf = pd.concat([pbdf,pbdata], ignore_index=True)
+
+# Create dictionaries for the positions
+posdict = dict()
+posdict['RB'], posdict['QB'], posdict['WR'] = 0, 1, 2
+
+# Add Pro Bowl appearances to the data
+for index, row in pbdf.iterrows():
+    
+    # Find the row in the data
+    current_df = stat_dfs[posdict.get(row[0])]
+    mask_df = current_df.isin({"Player" : [row[1]], "Year" : [row['Year']]})
+    
+    # Add the Pro Bowl appearance
+    result = mask_df.index[((mask_df['Year'] == True) & (mask_df['Player'] == True))].tolist()
+    stat_dfs[posdict.get(row[0])]['pro_bowl'][result] = 1
+
+# Save the data
+for idx, df in enumerate(stat_dfs):
+    name = "nfl_" + stat_names[idx][0] + ".csv"
+    df.to_csv(name, index=False)
